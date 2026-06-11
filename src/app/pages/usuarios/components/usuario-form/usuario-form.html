@@ -1,0 +1,52 @@
+<div class="usuario-form">
+
+    <div class="field">
+
+        <label>Nombre</label>
+
+        <input
+            pInputText
+            [(ngModel)]="usuario.nombre">
+
+    </div>
+
+    <div class="field">
+
+        <label>Correo</label>
+
+        <input
+            pInputText
+            [(ngModel)]="usuario.correo">
+
+    </div>
+
+    <div class="field">
+
+        <label>Rol</label>
+
+        <p-select
+            [options]="roles"
+            optionLabel="label"
+            optionValue="value"
+            [(ngModel)]="usuario.rol">
+        </p-select>
+
+    </div>
+
+    <div class="acciones">
+
+        <p-button
+            label="Cancelar"
+            severity="secondary"
+            (onClick)="onCancelar()">
+        </p-button>
+
+        <p-button
+            label="Guardar"
+            icon="pi pi-check"
+            (onClick)="onGuardar()">
+        </p-button>
+
+    </div>
+
+</div>

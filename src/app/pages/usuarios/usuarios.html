@@ -1,0 +1,141 @@
+<app-app-toast></app-app-toast>
+
+<app-app-confirm-dialog>
+</app-app-confirm-dialog>
+
+<app-page-header
+    title="Usuarios"
+    subtitle="Administración de usuarios">
+</app-page-header>
+
+<app-page-toolbar>
+
+    <p-button
+        label="Nuevo Usuario"
+        icon="pi pi-plus"
+        (onClick)="nuevoUsuario()">
+    </p-button>
+
+    <p-button
+        label="Exportar"
+        icon="pi pi-download"
+        severity="secondary"
+        (onClick)="exportar()">
+    </p-button>
+
+    <p-button
+        label="Ver Seleccionados"
+        icon="pi pi-users"
+        severity="info"
+        (onClick)="mostrarSeleccionados()">
+    </p-button>
+
+</app-page-toolbar>
+
+<app-app-dialog
+    [(visible)]="mostrarDialogo"
+    [title]="
+        modoEdicion
+            ? 'Editar Usuario'
+            : 'Nuevo Usuario'
+    ">
+
+    <app-usuario-form
+        [usuario]="usuario"
+        (guardar)="guardarUsuario($event)"
+        (cancelar)="cerrarDialogo()">
+    </app-usuario-form>
+
+</app-app-dialog>
+
+<app-app-dialog
+    [(visible)]="mostrarSeleccionadosDialog"
+    title="Usuarios Seleccionados"
+    width="40rem">
+
+    @if (selectedUsers.length) {
+
+        <ul>
+
+            @for (
+                usuario of selectedUsers;
+                track usuario.id
+            ) {
+
+                <li>
+
+                    <strong>
+                        {{ usuario.nombre }}
+                    </strong>
+
+                    -
+                    {{ usuario.correo }}
+
+                </li>
+
+            }
+
+        </ul>
+
+    } @else {
+
+        <p>
+            No hay usuarios seleccionados.
+        </p>
+
+    }
+
+</app-app-dialog>
+
+<app-page-content>
+
+    <div
+        style="
+            margin-bottom: 1rem;
+            font-weight: 600;
+        ">
+
+        Seleccionados:
+        {{ selectedUsers.length }}
+
+    </div>
+
+    <app-data-table
+        [columns]="columns"
+        [data]="usuarios"
+        (rowsSelected)="onSelectionChange($event)"
+        [globalFilterFields]="[
+            'nombre',
+            'correo',
+            'rol'
+        ]">
+
+        <ng-template #actions let-row>
+
+            <div
+                style="
+                    display:flex;
+                    gap:.5rem;
+                ">
+
+                <p-button
+                    icon="pi pi-pencil"
+                    severity="secondary"
+                    [rounded]="true"
+                    (onClick)="editarUsuario(row)">
+                </p-button>
+
+                <p-button
+                    icon="pi pi-trash"
+                    severity="danger"
+                    [rounded]="true"
+                    (onClick)="eliminarUsuario(row)">
+                </p-button>
+
+            </div>
+
+        </ng-template>
+
+    </app-data-table>
+
+</app-page-content>

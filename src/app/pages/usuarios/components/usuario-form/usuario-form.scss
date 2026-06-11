@@ -1,0 +1,31 @@
+.usuario-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+
+}
+
+.field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: .5rem;
+
+}
+
+.acciones {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: .75rem;
+
+    margin-top: 1rem;
+
+}
