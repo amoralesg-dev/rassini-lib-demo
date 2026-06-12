@@ -278,23 +278,33 @@ export class UsuariosComponent {
 
     eliminarUsuario(usuario: Usuario): void {
 
-      console.log('ELIMINAR CLICK', usuario);
+        console.log('ELIMINAR CLICK', usuario);
 
-      this.dialog.confirm({
+        this.dialog.confirm({
 
-          header: 'Eliminar Usuario',
+            header: 'Eliminar Usuario',
 
-          message: `¿Deseas eliminar a ${usuario.nombre}?`,
+            message: `¿Deseas eliminar a ${usuario.nombre}?`,
 
-          accept: () => {
+            accept: () => {
 
-              console.log('ACEPTO');
+                console.log('ACEPTO');
 
-          }
+                this.usuarios =
+                    this.usuarios.filter(
 
-      });
+                        current =>
+                            current.id !== usuario.id
 
-  }
+                    );
+
+                this.guardarStorage();
+
+            }
+
+        });
+
+    }
 
     exportar(): void {
 
