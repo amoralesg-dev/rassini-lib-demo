@@ -97,7 +97,7 @@
 <app-page-content>
 
     <div class="card flex flex-col gap-4"><span class="font-semibold text-xl">card 1</span></div>
-    <div class="card flex flex-col gap-4">card 2</div>
+    <div class="p-chip-label">card 2</div>
     <div class="card flex flex-col gap-4">card 3</div>
     <div class="card flex flex-col gap-4">card 4</div>
 
@@ -110,6 +110,19 @@
 
         Seleccionados:
         {{ selectedUsers.length }}
+
+    </div>
+
+    <div class="card">
+
+        <div class="font-semibold text-xl">
+            DatePicker Test
+        </div>
+
+        <p-datepicker
+            [(ngModel)]="fecha"
+            [showIcon]="true">
+        </p-datepicker>
 
     </div>
 

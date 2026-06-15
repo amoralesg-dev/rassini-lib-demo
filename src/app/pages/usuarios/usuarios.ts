@@ -5,6 +5,10 @@ import { ButtonModule } from 'primeng/button';
 import { UsuarioFormComponent }
 from './components/usuario-form/usuario-form';
 
+import { DatePicker } from 'primeng/datepicker';
+import { FormsModule } from '@angular/forms';
+
+
 import {
     AppToast,
     AppConfirmDialog,
@@ -42,12 +46,16 @@ interface Usuario {
       AppToast,
       AppConfirmDialog,
       ButtonModule,
-      UsuarioFormComponent
+      UsuarioFormComponent,
+      DatePicker,
+      FormsModule
   ],
     templateUrl: './usuarios.html',
     styleUrl: './usuarios.scss'
 })
 export class UsuariosComponent {
+
+    fecha: Date | null = null;
 
     private readonly STORAGE_KEY =
         'rassini-usuarios';
